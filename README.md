@@ -18,7 +18,7 @@
 - [x] Criar repositório
 - [x] Configurar Padronização de código (Eslint + Prettier)
 - [x] Configurar Testes
-- [ ] Configurar CI pipelines
+- [x] Configurar CI/CD pipeline
 - [ ] Configurar Docker
 
 ### Desenvolvimento
