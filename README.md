@@ -3,10 +3,12 @@
 
 
 ## Tecnologias Escolhidas
-- React com Typescript
-- Eslint + React-Testing-Library + Vitest
+- React + Typescript
+- React-Testing-Library + Vitest
 - Eslint + Prettier
-- Husky + Lint-staged + Git-commit-msg-linter 
+- Husky + Lint-staged + Git-commit-msg-linter
+
+## Como usar
 
 ---
 
@@ -14,7 +16,7 @@
 
 ### Estrutura da aplicação
 - [x] Criar repositório
-- [ ] Configurar Padronização de código
+- [ ] Configurar Padronização de código (Eslint + Prettier)
 - [ ] Configurar Testes
 - [ ] Configurar CI pipelines
 - [ ] Configurar Docker
