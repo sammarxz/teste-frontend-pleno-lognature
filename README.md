@@ -16,7 +16,7 @@
 
 ### Estrutura da aplicação
 - [x] Criar repositório
-- [ ] Configurar Padronização de código (Eslint + Prettier)
+- [x] Configurar Padronização de código (Eslint + Prettier)
 - [ ] Configurar Testes
 - [ ] Configurar CI pipelines
 - [ ] Configurar Docker
