@@ -1,0 +1,47 @@
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone Repository
+        uses: actions/checkout@v3
+      - name: Install Node 19.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 19.x
+      - name: Install Yarn 
+        run: npm install -g yarn
+      - name: Install Dependencies with Yarn
+        run: yarn
+      - name: Test
+        run: yarn test
+        env:
+          CI: true
+      - name: Generate build
+        run: yarn build
+      - name: Upload artifact in order to deploy
+        uses: actions/upload-artifact@v2
+        with:
+          name: production-files
+          path: ./dist
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Get Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: production-files
+          path: ./dist
+      - name: Deploy to Github Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GH_ACCESS_TOKEN }}
+          publish_dir: ./dist
