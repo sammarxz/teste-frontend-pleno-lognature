@@ -13,4 +13,5 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './src/setupTests.ts',
   },
+  base: 'teste-frontend-pleno-lognature',
 });
