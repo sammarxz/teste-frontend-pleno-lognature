@@ -8,7 +8,10 @@
 - Eslint + Prettier
 - Husky + Lint-staged + Git-commit-msg-linter
 - Github Actions + GH Pages
-- Docker 
+- Chakra-UI
+- Redux + Redux-toolkit
+- Framer-motion
+- Emotion
 
 ## Como usar
 
@@ -50,4 +53,8 @@ $ yarn dev
 - [ ] Configurar Docker
 
 ### Desenvolvimento
-...
+- [x] Setup do ChakraUI
+- [] Criar dashboard (Estático)
+- [] Criar board (estático)
+- [] Criar Task (Estático)
+- [] Adicionar funcionalidade com o Redux

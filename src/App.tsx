@@ -1,8 +1,12 @@
+import { ChakraProvider } from '@chakra-ui/react';
+
+import { theme } from '@/styles/theme';
+
 function App() {
   return (
-    <div className="App">
+    <ChakraProvider resetCSS theme={theme}>
       <h1>Hello World</h1>
-    </div>
+    </ChakraProvider>
   );
 }
 
