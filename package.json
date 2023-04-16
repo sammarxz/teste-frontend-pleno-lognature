@@ -9,11 +9,12 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "yarn eslint src/",
-    "prettier": "yarn prettier -c -w src/ ",
-    "test": "vitest --run --passWithNoTests --silent",
+    "lint": "yarn eslint --fix ./src --ext .ts,.tsx",
+    "prettier": "npx prettier -c -w ./src",
+    "test": "vitest --run  --passWithNoTests",
     "test:coverage": "yarn test --coverage",
-    "test:watch": "yarn vitest --watch"
+    "test:watch": "yarn vitest --watch",
+    "prepare": "is-ci || husky install"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -37,7 +38,10 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "husky": "^8.0.3",
+    "is-ci": "^3.0.1",
     "jsdom": "^21.1.1",
+    "lint-staged": "^13.2.1",
     "prettier": "^2.8.7",
     "typescript": "^4.9.3",
     "vite": "^4.2.0",
