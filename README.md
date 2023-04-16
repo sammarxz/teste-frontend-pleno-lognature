@@ -46,7 +46,7 @@ $ yarn dev
 - [x] Configurar Padronização de código (Eslint + Prettier)
 - [x] Configurar Testes
 - [x] Configurar CI/CD pipeline
-- [ ] Adicionar verificação pre-commit
+- [x] Adicionar verificação pre-commit
 - [ ] Configurar Docker
 
 ### Desenvolvimento
