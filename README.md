@@ -80,9 +80,8 @@ Aqui está um exemplo da estrutura padrão de um módulo:
 - [x] Adicionar verificação pre-commit
 - [ ] Configurar Docker
 
-### Desenvolvimento
+### Desenvolvimento Estático
 - [x] Setup do ChakraUI
-- [] Criar dashboard (Estático)
-- [] Criar board (estático)
-- [] Criar Task (Estático)
-- [] Adicionar funcionalidade com o Redux
+- [] Criar dashboard 
+- [] Criar board 
+- [] Criar Task 

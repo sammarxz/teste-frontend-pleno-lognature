@@ -7,8 +7,8 @@ type UserProfileProps = {
 
 export function UserProfile({ name, email }: UserProfileProps) {
   return (
-    <Flex align="center">
-      <Box mr="4" textAlign="right">
+    <Flex align="center" gap="4">
+      <Box textAlign="right">
         <Text>{name}</Text>
         <Text color="gray.300" fontSize="small">
           {email}

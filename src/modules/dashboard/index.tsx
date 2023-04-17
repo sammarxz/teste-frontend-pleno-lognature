@@ -1,4 +1,4 @@
-import { Header } from './components';
+import { Container, Header, Sidebar } from './components';
 
 type DashboardProps = {
   children: JSX.Element;
@@ -6,9 +6,10 @@ type DashboardProps = {
 
 export function Dashboard({ children }: DashboardProps) {
   return (
-    <>
+    <Container>
       <Header />
+      <Sidebar />
       {children}
-    </>
+    </Container>
   );
 }

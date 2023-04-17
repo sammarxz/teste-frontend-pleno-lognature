@@ -1,3 +1,3 @@
+export { Container } from './Container';
 export { Header } from './Header';
-export { Notifications } from './Notifications';
-export { UserProfile } from './UserProfile';
+export { Sidebar } from './Sidebar';
