@@ -11,7 +11,7 @@ export function SearchBox(props: SearchBoxProps) {
   return (
     <Flex
       as="label"
-      py="4"
+      py="2"
       px="6"
       color="gray.200"
       flex="1"

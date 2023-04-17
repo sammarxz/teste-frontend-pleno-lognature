@@ -28,9 +28,9 @@ export function Button(props: ButtonProps) {
       fontSize="sm"
       _hover={{ bg: 'gray.700' }}
       _active={{
-        bg: 'purple.900',
-        borderColor: 'purple.800',
-        textColor: 'purple.400',
+        bg: 'gray.700',
+        borderColor: 'gray.600',
+        textColor: 'gray.400',
       }}
       {...props}
     >

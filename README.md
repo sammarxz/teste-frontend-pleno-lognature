@@ -37,8 +37,8 @@ $ yarn dev
 - Github Actions + GH Pages
 - Chakra-UI
 - Redux + Redux-toolkit
-- Framer-motion
-- Emotion
+- React-dnd
+- LocalStorage
 
 ## Decisões de arquitetura
 Continuo tentando achar a arquitetura perfeita, já passei pela Clean Architecture, é interessante, mas 
