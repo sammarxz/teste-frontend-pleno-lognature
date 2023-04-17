@@ -1,21 +1,20 @@
-import { Box, Stack, Text } from '@chakra-ui/react';
+import { Box, useBreakpointValue } from '@chakra-ui/react';
 
-import { Nav } from './components';
+import { SidebarContent, SidebarDrawer } from './components';
 
 export function Sidebar() {
+  const isDrawerSidebar = useBreakpointValue({
+    base: true,
+    lg: false,
+  });
+
+  if (isDrawerSidebar) {
+    return <SidebarDrawer />;
+  }
+
   return (
     <Box as="aside" w="64" mr="8">
-      <Stack spacing="12" align="flex-start">
-        <Nav />
-        <Text
-          fontWeight="bold"
-          color="gray.400"
-          fontSize="small"
-          textTransform="uppercase"
-        >
-          Projetos
-        </Text>
-      </Stack>
+      <SidebarContent />
     </Box>
   );
 }

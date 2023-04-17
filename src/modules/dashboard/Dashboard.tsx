@@ -1,6 +1,8 @@
 import { Flex, SimpleGrid, Stack } from '@chakra-ui/react';
 
-import { Container, Header, Sidebar } from './components';
+import { Header, Sidebar } from './components';
+
+import { DashboardContextProvider } from './context';
 
 type DashboardProps = {
   children: JSX.Element;
@@ -8,7 +10,7 @@ type DashboardProps = {
 
 export function Dashboard({ children }: DashboardProps) {
   return (
-    <Container>
+    <DashboardContextProvider>
       <Stack spacing="6">
         <Header />
         <Flex>
@@ -18,6 +20,6 @@ export function Dashboard({ children }: DashboardProps) {
           </SimpleGrid>
         </Flex>
       </Stack>
-    </Container>
+    </DashboardContextProvider>
   );
 }
