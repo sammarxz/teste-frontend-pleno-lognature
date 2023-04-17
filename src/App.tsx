@@ -4,14 +4,14 @@ import { theme } from '@/styles/theme';
 
 import { Container } from '@/modules/common/components';
 
-import { Boards, Dashboard } from '@/modules';
+import { Dashboard, Kanban } from '@/modules';
 
 function App() {
   return (
     <ChakraProvider resetCSS theme={theme}>
       <Container>
         <Dashboard>
-          <Boards />
+          <Kanban />
         </Dashboard>
       </Container>
     </ChakraProvider>

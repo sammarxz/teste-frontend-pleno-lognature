@@ -1,2 +1,2 @@
-export { Boards } from './boards';
 export { Dashboard } from './dashboard';
+export { Kanban } from './kanban';

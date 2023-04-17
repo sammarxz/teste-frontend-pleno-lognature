@@ -8,9 +8,9 @@ import {
 } from '@chakra-ui/react';
 import { RiMenuLine } from 'react-icons/ri';
 
-import { Logo, SearchBox } from '@/modules/common/components';
+import { Logo } from '@/modules/common/components';
 
-import { Notifications, UserProfile } from './components';
+import { Notifications, SearchBox, UserProfile } from './components';
 
 import { useDashboard } from '../../hooks';
 

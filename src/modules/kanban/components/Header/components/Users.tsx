@@ -18,7 +18,7 @@ export function Users() {
       </AvatarGroup>
       <IconButton
         variant="outline"
-        colorScheme="whiteAlpha"
+        colorScheme="purple"
         aria-label="adicionar usuário"
         fontSize="20px"
         rounded="full"
