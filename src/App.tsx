@@ -2,10 +2,14 @@ import { ChakraProvider } from '@chakra-ui/react';
 
 import { theme } from '@/styles/theme';
 
+import { Dashboard } from '@/modules/dashboard';
+
 function App() {
   return (
     <ChakraProvider resetCSS theme={theme}>
-      <h1>Hello World</h1>
+      <Dashboard>
+        <p>dashboard</p>
+      </Dashboard>
     </ChakraProvider>
   );
 }
