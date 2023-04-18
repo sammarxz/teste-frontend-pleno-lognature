@@ -7,7 +7,7 @@ type NavSectionProps = {
 
 export function NavSection({ title, children }: NavSectionProps) {
   return (
-    <Stack spacing="6">
+    <Stack spacing="6" w="full">
       <Text
         fontWeight="bold"
         color="gray.400"
