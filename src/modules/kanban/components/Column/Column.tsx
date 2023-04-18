@@ -2,17 +2,23 @@ import { Box, Button, Flex, Icon, Stack, Text } from '@chakra-ui/react';
 import { RiAddFill } from 'react-icons/ri';
 
 import { Task } from '../Task/Task';
+
+import { useColumnDrop } from './hooks/useColumnDrop';
 import { useColumnTasks } from './hooks/useColumnTasks';
-import { ColumnType } from './types';
+
 import { columnColorScheme } from './utils/columnColorScheme';
+
+import { ColumnType } from './types';
 
 type ColumnProps = {
   column: ColumnType;
 };
 
 export function Column({ column }: ColumnProps) {
-  const { tasks, addEmptyTask, updateTask, deleteTask } =
+  const { tasks, addEmptyTask, updateTask, deleteTask, dropTaskFrom } =
     useColumnTasks(column);
+
+  const { dropRef, isOver } = useColumnDrop(column, dropTaskFrom);
 
   const ColumnTasks = tasks.map((task, index) => (
     <Task
@@ -59,12 +65,15 @@ export function Column({ column }: ColumnProps) {
         </Button>
       </Stack>
       <Stack
+        ref={dropRef}
         direction={['row', 'column']}
         h={[300, 600]}
         mt={4}
         spacing={4}
         rounded="lg"
         overflow="auto"
+        alignItems="center"
+        opacity={isOver ? 0.2 : 1}
       >
         {ColumnTasks}
       </Stack>
