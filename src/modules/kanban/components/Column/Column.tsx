@@ -15,8 +15,14 @@ type ColumnProps = {
 };
 
 export function Column({ column }: ColumnProps) {
-  const { tasks, addEmptyTask, updateTask, deleteTask, dropTaskFrom } =
-    useColumnTasks(column);
+  const {
+    tasks,
+    addEmptyTask,
+    updateTask,
+    deleteTask,
+    dropTaskFrom,
+    swapTasks,
+  } = useColumnTasks(column);
 
   const { dropRef, isOver } = useColumnDrop(column, dropTaskFrom);
 
@@ -27,6 +33,7 @@ export function Column({ column }: ColumnProps) {
       index={index}
       onDelete={deleteTask}
       onUpdate={updateTask}
+      onDropHover={swapTasks}
     />
   ));
 
@@ -73,7 +80,7 @@ export function Column({ column }: ColumnProps) {
         rounded="lg"
         overflow="auto"
         alignItems="center"
-        opacity={isOver ? 0.2 : 1}
+        opacity={isOver ? 0.5 : 1}
       >
         {ColumnTasks}
       </Stack>

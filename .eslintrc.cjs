@@ -26,5 +26,6 @@ module.exports = {
     'import/extensions': 0,
     'react/jsx-props-no-spreading': 0,
     'react/require-default-props': 0,
+    '@typescript-eslint/naming-convention': 0,
   },
 };

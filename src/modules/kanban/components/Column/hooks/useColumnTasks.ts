@@ -6,6 +6,7 @@ import { ColumnType } from '../types';
 
 import { useTaskCollection } from '../../Task/hooks/useTaskCollection';
 import { TaskModel } from '../../Task/types';
+import { swap } from '../utils/swap';
 
 export function useColumnTasks(column: ColumnType) {
   const [tasks, setTasks] = useTaskCollection();
@@ -82,11 +83,26 @@ export function useColumnTasks(column: ColumnType) {
     [column, setTasks]
   );
 
+  const swapTasks = useCallback(
+    (i: number, j: number) => {
+      setTasks((allTasks) => {
+        const columnTasks = allTasks[column];
+
+        return {
+          ...allTasks,
+          [column]: swap(columnTasks, i, j),
+        };
+      });
+    },
+    [column, setTasks]
+  );
+
   return {
     tasks: tasks[column],
     addEmptyTask,
     updateTask,
     deleteTask,
     dropTaskFrom,
+    swapTasks,
   };
 }
