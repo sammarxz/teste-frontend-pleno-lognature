@@ -1,5 +1,6 @@
 import { Box, IconButton } from '@chakra-ui/react';
-import { useState } from 'react';
+import _ from 'lodash';
+import { useState, memo } from 'react';
 import { RiDeleteBinLine } from 'react-icons/ri';
 
 import { AutoResizeTextarea, MarkdownView } from './components';
@@ -22,11 +23,10 @@ export function Task({
   onDropHover: handleDropHover,
 }: TaskProps) {
   const [showEditor, setShowEditor] = useState(false);
-  const { ref, isDragging } = useTaskDragAndDrop<HTMLDivElement>({
-    task,
-    index,
-    handleDropHover,
-  });
+  const { ref, isDragging } = useTaskDragAndDrop<HTMLDivElement>(
+    { task, index },
+    handleDropHover
+  );
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newTitle = e.target.value;
@@ -48,10 +48,12 @@ export function Task({
       pl={6}
       pr={12}
       bg="gray.800"
+      border="1px"
+      borderColor="gray.700"
       cursor="grab"
       flexGrow={0}
       flexShrink={0}
-      opacity={isDragging ? 0.2 : 1}
+      opacity={isDragging ? 0.5 : 1}
     >
       <IconButton
         variant="unstyled"
@@ -74,7 +76,6 @@ export function Task({
           variant="unstyled"
           cursor="inherit"
           resize="none"
-          minH={70}
           maxH={200}
           focusBorderColor="none"
           onChange={handleTitleChange}
@@ -89,3 +90,17 @@ export function Task({
     </Box>
   );
 }
+
+export default memo(Task, (prev, next) => {
+  if (
+    _.isEqual(prev.task, next.task) &&
+    _.isEqual(prev.index, next.index) &&
+    prev.onDelete === next.onDelete &&
+    prev.onDropHover === next.onDropHover &&
+    prev.onUpdate === next.onUpdate
+  ) {
+    return true;
+  }
+
+  return false;
+});
