@@ -36,7 +36,7 @@ $ yarn dev
 - Husky + Lint-staged + Git-commit-msg-linter
 - Github Actions + GH Pages
 - Chakra-UI
-- Redux + Redux-toolkit
+- Context API
 - React-dnd
 - LocalStorage
 

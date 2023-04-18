@@ -1,4 +1,4 @@
-import { ColumnType } from '../types/enums';
+import { ColumnType } from '../types';
 
 export const columnColorScheme: Record<ColumnType, string> = {
   Pendente: 'purple.300',

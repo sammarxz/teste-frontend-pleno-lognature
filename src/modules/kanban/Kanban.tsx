@@ -1,7 +1,7 @@
 import { Box, SimpleGrid, Stack } from '@chakra-ui/react';
 
 import { Column, Header } from './components';
-import { ColumnType } from './components/Column/types/enums';
+import { ColumnType } from './components/Column/types';
 
 export function Kanban() {
   return (

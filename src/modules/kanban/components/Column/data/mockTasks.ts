@@ -1,5 +1,5 @@
 import { TaskModel } from '../../Task/types';
-import { ColumnType } from '../types/enums';
+import { ColumnType } from '../types';
 
 export const mockTasks: TaskModel[] = [
   {

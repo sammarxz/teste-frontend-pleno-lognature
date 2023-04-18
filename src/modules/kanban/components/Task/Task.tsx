@@ -16,7 +16,7 @@ export function Task({ index, task }: TaskProps) {
       w="full"
       py={3}
       px={6}
-      bg="gray.700"
+      bg="gray.800"
       cursor="grab"
     >
       <IconButton

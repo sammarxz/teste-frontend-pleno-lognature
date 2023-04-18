@@ -2,8 +2,8 @@ import { Box, Button, Flex, Icon, Stack, Text } from '@chakra-ui/react';
 import { RiAddFill } from 'react-icons/ri';
 
 import { Task } from '../Task/Task';
-import { mockTasks } from './data/mockTasks';
-import { ColumnType } from './types/enums';
+import { useColumnTasks } from './hooks/useColumnTasks';
+import { ColumnType } from './types';
 import { columnColorScheme } from './utils/columnColorScheme';
 
 type ColumnProps = {
@@ -11,7 +11,9 @@ type ColumnProps = {
 };
 
 export function Column({ column }: ColumnProps) {
-  const ColumnTasks = mockTasks.map((task, index) => (
+  const { tasks, addEmptyTask } = useColumnTasks(column);
+
+  const ColumnTasks = tasks.map((task, index) => (
     <Task key={task.id} task={task} index={index} />
   ));
 
@@ -42,6 +44,7 @@ export function Column({ column }: ColumnProps) {
             bg: 'gray.700',
           }}
           rightIcon={<Icon as={RiAddFill} />}
+          onClick={addEmptyTask}
         >
           Adicionar Tarefa
         </Button>
@@ -49,10 +52,8 @@ export function Column({ column }: ColumnProps) {
       <Stack
         direction={['row', 'column']}
         h={[300, 600]}
-        p={4}
-        mt={2}
+        mt={4}
         spacing={4}
-        bg="gray.800"
         rounded="lg"
         overflow="auto"
       >
