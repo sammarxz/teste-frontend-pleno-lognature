@@ -27,7 +27,7 @@ export function SearchBox(props: SearchBoxProps) {
         color="gray.500"
         variant="unstyled"
         placeholder={placeholder}
-        _placeholder={{ color: 'gray.600' }}
+        _placeholder={{ color: 'gray.400' }}
         mr="4"
       />
       <Icon as={RiSearchLine} fontSize="20" />

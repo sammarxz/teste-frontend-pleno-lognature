@@ -1,4 +1,4 @@
-import { ColumnType } from '@/modules/kanban/components/Columns/types/enums';
+import { ColumnType } from '../../Column/types';
 
 export interface TaskModel {
   id: string;

@@ -35,7 +35,9 @@ export function Column({ column }: ColumnProps) {
             rounded="full"
             bg={columnColorScheme[column]}
           />
-          <Text fontWeight="semibold">{column}</Text>
+          <Text fontWeight="semibold">
+            {column} ({tasks.length})
+          </Text>
         </Flex>
         <Button
           size="sm"

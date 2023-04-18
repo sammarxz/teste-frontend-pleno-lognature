@@ -13,7 +13,7 @@ export function Sidebar() {
   }
 
   return (
-    <Box as="aside" w="64" mr="8">
+    <Box as="aside" w="64" mr="8" mt="4">
       <SidebarContent />
     </Box>
   );
