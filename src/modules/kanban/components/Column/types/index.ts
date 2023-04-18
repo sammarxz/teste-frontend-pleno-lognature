@@ -3,3 +3,7 @@ export enum ColumnType {
   IN_PROGRESS = 'Em Andamento',
   COMPELTED = 'Concluída',
 }
+
+export enum ItemType {
+  TASK = 'Task',
+}

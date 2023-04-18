@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { RiDeleteBinLine } from 'react-icons/ri';
 
 import { AutoResizeTextarea, MarkdownView } from './components';
+import { useTaskDragAndDrop } from './hooks/useTaskDragAndDrop';
 import { TaskModel } from './types';
 
 type TaskProps = {
@@ -19,6 +20,10 @@ export function Task({
   onDelete: handleDelete,
 }: TaskProps) {
   const [showEditor, setShowEditor] = useState(false);
+  const { ref, isDragging } = useTaskDragAndDrop<HTMLDivElement>({
+    task,
+    index,
+  });
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newTitle = e.target.value;
@@ -31,6 +36,7 @@ export function Task({
 
   return (
     <Box
+      ref={ref}
       role="group"
       position="relative"
       rounded="lg"
@@ -40,6 +46,9 @@ export function Task({
       pr={12}
       bg="gray.800"
       cursor="grab"
+      flexGrow={0}
+      flexShrink={0}
+      opacity={isDragging ? 0.2 : 1}
     >
       <IconButton
         variant="unstyled"
