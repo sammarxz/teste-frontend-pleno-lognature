@@ -1,4 +1,9 @@
 # DOOO
+Bom, assim que li a descrição sobre desafio, de desenvolver uma aplicação de gerenciamento de tarefas (to-do list) com 
+suporte a status (pendente, em andamento ou concluída), me veio a cabeça uma aplicação estilo Kanban. E assim, resolvi 
+criar essa aplicação nesse estilo. Claro, muita coisa aqui está estática ainda, mas o core da aplicação está funcional.
+
+![Dashboard DOOO task manager](./public/preview.png "Preview Dooo task manager")
 
 ## Como usar
 
@@ -59,16 +64,19 @@ Aqui está um exemplo da estrutura padrão de um módulo:
 |   |   ├── components
 |   |   ├── utils
 |   |   ├── hooks
-|   |   ├── redux
+|   |   ├── data
+|   |   ├── types
+|   |   ├── Dashboard.tsx
 |   |   ├── index.ts
 ```
 
 - `components` irá conter os componentes relacionados aquele módulo
 - `utils` irá conter funções pequenas, reusáveis e genéricas. 
 - `hooks` irá conter os Custom Hooks
-- `hooks` irá conter os Custom Hooks
-- `redux` nesse caso irá conter a lógica relacionada ao uso do Redux `//ainda estou pensativo sobre essa parte`
-- `index.ts` será o ponto de entrada do módulo, a junção de tudo.
+- `types` irá conter algumas tipagens que irão ajudar o desenvolvimento com typescript;
+- `data` nesse caso irá conter alguns dados estáticos que vão ser utilizados para construir a aplicação, como uma lista com items do menu, etc.
+- `Dashboard.ts` o nome vai mudar dependendo do módulo que esteja inserido, mas esse arquivo será a junção de tudo.
+- `index.ts` será o ponto de saída do módulo.
 
 ## RoadMap
 
@@ -82,6 +90,11 @@ Aqui está um exemplo da estrutura padrão de um módulo:
 
 ### Desenvolvimento Estático
 - [x] Setup do ChakraUI
-- [] Criar dashboard 
-- [] Criar board 
-- [] Criar Task 
+- [x] Criar dashboard 
+- [x] Criar kanban 
+- [x] Criar Task
+
+### Desenvolvimento de Funcionalidades
+- [x] CRUD de Tasks
+- [x] Renderizar Markdown 
+- [x] Drag'n Drop
