@@ -92,7 +92,7 @@ Aqui você pode ver um artigo falando mais: [Readme Driven Development](https://
 - [x] Configurar Testes
 - [x] Configurar CI/CD pipeline
 - [x] Adicionar verificação pre-commit
-- [ ] Configurar Docker
+- [ ] Criar ambiente de desenvolvimento em Docker 
 
 ### Desenvolvimento Estático
 - [x] Setup do ChakraUI
@@ -104,3 +104,8 @@ Aqui você pode ver um artigo falando mais: [Readme Driven Development](https://
 - [x] CRUD de Tasks
 - [x] Renderizar Markdown 
 - [x] Drag'n Drop
+
+### Testes Unitários nos Custom Hooks
+- [x] useTaskCollection
+- [ ] useColumnDrop
+- [ ] useColumnTasks
