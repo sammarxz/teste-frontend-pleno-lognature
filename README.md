@@ -82,6 +82,9 @@ Aqui está um exemplo da estrutura padrão de um módulo:
 - `index.ts` será o ponto de saída do módulo.
 
 ## RoadMap
+Outra coisa que achei muito interessante, foi a criação de um projeto utilizando a metodologia `Readme Driven Development` ou `RDD`, que basicamente consiste em você escrever primeiro o `README` listando algumas decisões e funcionalidades e ir depois ir implementando-as. 
+
+Aqui você pode ver um artigo falando mais: [Readme Driven Development](https://tom.preston-werner.com/2010/08/23/readme-driven-development.html)
 
 ### Estrutura da aplicação
 - [x] Criar repositório
