@@ -31,8 +31,40 @@ export function useColumnTasks(column: ColumnType) {
     });
   }, [column, setTasks]);
 
+  const updateTask = useCallback(
+    (id: TaskModel['id'], updatedTask: Omit<Partial<TaskModel>, 'id'>) => {
+      setTasks((allTasks) => {
+        const columnTasks = allTasks[column];
+
+        return {
+          ...allTasks,
+          [column]: columnTasks.map((task) =>
+            task.id === id ? { ...task, ...updatedTask } : task
+          ),
+        };
+      });
+    },
+    [column, setTasks]
+  );
+
+  const deleteTask = useCallback(
+    (id: TaskModel['id']) => {
+      setTasks((allTasks) => {
+        const columnTasks = allTasks[column];
+
+        return {
+          ...allTasks,
+          [column]: columnTasks.filter((task) => task.id !== id),
+        };
+      });
+    },
+    [column, setTasks]
+  );
+
   return {
     tasks: tasks[column],
     addEmptyTask,
+    updateTask,
+    deleteTask,
   };
 }
