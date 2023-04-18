@@ -3,6 +3,9 @@ Bom, assim que li a descrição sobre desafio, de desenvolver uma aplicação de
 suporte a status (pendente, em andamento ou concluída), me veio a cabeça uma aplicação estilo Kanban. E assim, resolvi 
 criar essa aplicação nesse estilo. Claro, muita coisa aqui está estática ainda, mas o core da aplicação está funcional.
 
+Ah, e como eu gosto e utilizo muito markdown no meu dia a dia, resolvi colocar essa funcionalidade, onde cada task pode ser escrita utilizando markdown.
+assim abrindo oportunidade para várias coisas interessantes, como adicionar imagens, listas, adicionar `bold` ou `italic` e  sub-tarefas utilizando a syntax de checkbox.
+
 ![Dashboard DOOO task manager](./public/preview.png "Preview Dooo task manager")
 
 ## Como usar
