@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 import { useCallback } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -11,6 +12,8 @@ import { swap } from '../utils/swap';
 export function useColumnTasks(column: ColumnType) {
   const [tasks, setTasks] = useTaskCollection();
 
+  const columnTasks = tasks[column];
+
   const addEmptyTask = useCallback(() => {
     setTasks((allTasks) => {
       const columnTasks = allTasks[column];
@@ -21,7 +24,7 @@ export function useColumnTasks(column: ColumnType) {
 
       const newColumnTask: TaskModel = {
         id: uuidv4(),
-        title: `Nova Tarefa ${column}`,
+        title: `Nova tarefa ${column}`,
         column,
       };
 
@@ -32,30 +35,28 @@ export function useColumnTasks(column: ColumnType) {
     });
   }, [column, setTasks]);
 
-  const updateTask = useCallback(
-    (id: TaskModel['id'], updatedTask: Omit<Partial<TaskModel>, 'id'>) => {
+  const deleteTask = useCallback(
+    (id: TaskModel['id']) => {
       setTasks((allTasks) => {
         const columnTasks = allTasks[column];
-
         return {
           ...allTasks,
-          [column]: columnTasks.map((task) =>
-            task.id === id ? { ...task, ...updatedTask } : task
-          ),
+          [column]: columnTasks.filter((task) => task.id !== id),
         };
       });
     },
     [column, setTasks]
   );
 
-  const deleteTask = useCallback(
-    (id: TaskModel['id']) => {
+  const updateTask = useCallback(
+    (id: TaskModel['id'], updatedTask: Omit<Partial<TaskModel>, 'id'>) => {
       setTasks((allTasks) => {
         const columnTasks = allTasks[column];
-
         return {
           ...allTasks,
-          [column]: columnTasks.filter((task) => task.id !== id),
+          [column]: columnTasks.map((task) =>
+            task.id === id ? { ...task, ...updatedTask } : task
+          ),
         };
       });
     },
@@ -73,6 +74,7 @@ export function useColumnTasks(column: ColumnType) {
           return allTasks;
         }
 
+        // remove the task from the original column and copy it within the destination column
         return {
           ...allTasks,
           [from]: fromColumnTasks.filter((task) => task.id !== id),
@@ -87,7 +89,6 @@ export function useColumnTasks(column: ColumnType) {
     (i: number, j: number) => {
       setTasks((allTasks) => {
         const columnTasks = allTasks[column];
-
         return {
           ...allTasks,
           [column]: swap(columnTasks, i, j),
@@ -98,11 +99,11 @@ export function useColumnTasks(column: ColumnType) {
   );
 
   return {
-    tasks: tasks[column],
+    tasks: columnTasks,
     addEmptyTask,
     updateTask,
-    deleteTask,
     dropTaskFrom,
+    deleteTask,
     swapTasks,
   };
 }

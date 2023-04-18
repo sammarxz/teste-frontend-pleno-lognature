@@ -14,7 +14,7 @@ export function Kanban() {
           <SimpleGrid columns={[1, 3]} spacing={[16, 4]}>
             <Column column={ColumnType.TO_DO} />
             <Column column={ColumnType.IN_PROGRESS} />
-            <Column column={ColumnType.COMPELTED} />
+            <Column column={ColumnType.COMPLETED} />
           </SimpleGrid>
         </DndProvider>
       </Stack>

@@ -1,13 +1,12 @@
 import { Box, Button, Flex, Icon, Stack, Text } from '@chakra-ui/react';
 import { RiAddFill } from 'react-icons/ri';
 
-import { Task } from '../Task/Task';
-
 import { useColumnDrop } from './hooks/useColumnDrop';
 import { useColumnTasks } from './hooks/useColumnTasks';
 
 import { columnColorScheme } from './utils/columnColorScheme';
 
+import { Task } from '../Task/Task';
 import { ColumnType } from './types';
 
 type ColumnProps = {
@@ -26,17 +25,6 @@ export function Column({ column }: ColumnProps) {
 
   const { dropRef, isOver } = useColumnDrop(column, dropTaskFrom);
 
-  const ColumnTasks = tasks.map((task, index) => (
-    <Task
-      key={task.id}
-      task={task}
-      index={index}
-      onDelete={deleteTask}
-      onUpdate={updateTask}
-      onDropHover={swapTasks}
-    />
-  ));
-
   return (
     <Box as="section">
       <Stack spacing="2">
@@ -49,7 +37,7 @@ export function Column({ column }: ColumnProps) {
             bg={columnColorScheme[column]}
           />
           <Text fontWeight="semibold">
-            {column} ({tasks.length})
+            {column} ({tasks.length > 0 ? tasks.length : null})
           </Text>
         </Flex>
         <Button
@@ -82,7 +70,20 @@ export function Column({ column }: ColumnProps) {
         alignItems="center"
         opacity={isOver ? 0.5 : 1}
       >
-        {ColumnTasks}
+        {tasks ? (
+          <>
+            {tasks.map((task, index) => (
+              <Task
+                key={task.id}
+                task={task}
+                index={index}
+                onDelete={deleteTask}
+                onUpdate={updateTask}
+                onDropHover={swapTasks}
+              />
+            ))}
+          </>
+        ) : null}
       </Stack>
     </Box>
   );

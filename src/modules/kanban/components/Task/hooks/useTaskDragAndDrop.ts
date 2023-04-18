@@ -4,15 +4,10 @@ import { XYCoord, useDrag, useDrop } from 'react-dnd';
 import { ItemType } from '../../Column/types';
 import { DragItem, TaskModel } from '../types';
 
-export function useTaskDragAndDrop<T extends HTMLElement>({
-  task,
-  index,
-  handleDropHover,
-}: {
-  task: TaskModel;
-  index: number;
-  handleDropHover: (i: number, j: number) => void;
-}) {
+export function useTaskDragAndDrop<T extends HTMLElement>(
+  { task, index }: { task: TaskModel; index: number },
+  handleDropHover: (i: number, j: number) => void
+) {
   const ref = useRef<T>(null);
 
   const [{ isDragging }, drag] = useDrag<
@@ -20,18 +15,13 @@ export function useTaskDragAndDrop<T extends HTMLElement>({
     void,
     { isDragging: boolean }
   >({
+    item: { from: task.column, id: task.id, index },
     type: ItemType.TASK,
-    item: {
-      from: task.column,
-      id: task.id,
-      index,
-    },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
     }),
   });
 
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   const [_, drop] = useDrop<DragItem, void, unknown>({
     accept: ItemType.TASK,
     hover: (item, monitor) => {
@@ -39,9 +29,15 @@ export function useTaskDragAndDrop<T extends HTMLElement>({
         return;
       }
 
+      // the tasks are not on the same column
+      if (item.from !== task.column) {
+        return;
+      }
+
       const draggedItemIndex = item.index;
       const hoveredItemIndex = index;
 
+      // we are swapping the task with itself
       if (draggedItemIndex === hoveredItemIndex) {
         return;
       }
@@ -49,10 +45,13 @@ export function useTaskDragAndDrop<T extends HTMLElement>({
       const isDraggedItemAboveHovered = draggedItemIndex < hoveredItemIndex;
       const isDraggedItemBelowHovered = !isDraggedItemAboveHovered;
 
+      // get mouse coordinatees
       const { x: mouseX, y: mouseY } = monitor.getClientOffset() as XYCoord;
 
+      // get hover item rectangle
       const hoveredBoundingRect = ref.current.getBoundingClientRect();
 
+      // Get hover item middle height position
       const hoveredMiddleHeight =
         (hoveredBoundingRect.bottom - hoveredBoundingRect.top) / 2;
 
@@ -63,8 +62,9 @@ export function useTaskDragAndDrop<T extends HTMLElement>({
         mouseYRelativeToHovered > hoveredMiddleHeight;
 
       // Only perform the move when the mouse has crossed half of the items height
-      // When dragging dowards, only mode when the cursor is below 50%
+      // When dragging downwards, only move when the cursor is below 50%
       // When dragging upwards, only move when the cursor is above 50%
+
       if (isDraggedItemAboveHovered && isMouseYAboveHoveredMiddleHeight) {
         return;
       }
@@ -73,9 +73,13 @@ export function useTaskDragAndDrop<T extends HTMLElement>({
         return;
       }
 
-      // perform the action
+      // Time to actually perform the action
       handleDropHover(draggedItemIndex, hoveredItemIndex);
 
+      // Note: we're mutating the monitor item here!
+      // Generally it's better to avoid mutations,
+      // but it's good here for the sake of performance
+      // to avoid expensive index searches.
       // eslint-disable-next-line no-param-reassign
       item.index = hoveredItemIndex;
     },

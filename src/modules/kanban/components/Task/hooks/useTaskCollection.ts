@@ -11,56 +11,66 @@ export function useTaskCollection() {
     Pendente: [
       {
         id: uuidv4(),
-        column: ColumnType.IN_PROGRESS,
+        column: ColumnType.TO_DO,
         title: 'Adicionar CRUD de projetos',
       },
       {
         id: uuidv4(),
-        column: ColumnType.IN_PROGRESS,
-        title: 'Testes Unitários',
+        column: ColumnType.TO_DO,
+        title: 'Testes Unitários nos `Custom Hooks`',
       },
       {
         id: uuidv4(),
-        column: ColumnType.IN_PROGRESS,
-        title: 'Criar container Docker',
+        column: ColumnType.TO_DO,
+        title: 'Criar container Docker para desenvolvimento',
       },
       {
         id: uuidv4(),
-        column: ColumnType.IN_PROGRESS,
-        title: 'Adicionar Filtragem de tarefas ',
+        column: ColumnType.TO_DO,
+        title: 'Adicionar Buscapor tarefas',
+      },
+      {
+        id: uuidv4(),
+        column: ColumnType.TO_DO,
+        title: 'Comemorar!',
       },
     ],
     'Em Andamento': [
       {
         id: uuidv4(),
         column: ColumnType.IN_PROGRESS,
-        title: 'Comemorar 🥳🎉',
+        title: `
+Adicionar animações
+
+- [ ] Animação de Hover
+- [ ] Animar Tarefas com Framer-motion            
+`,
       },
     ],
-    Concluída: [
+    Completa: [
       {
         id: uuidv4(),
-        column: ColumnType.IN_PROGRESS,
+        column: ColumnType.COMPLETED,
         title: 'Design da aplicação',
       },
       {
         id: uuidv4(),
-        column: ColumnType.IN_PROGRESS,
+        column: ColumnType.COMPLETED,
         title: 'Criar estrutura',
       },
       {
         id: uuidv4(),
-        column: ColumnType.IN_PROGRESS,
+        column: ColumnType.COMPLETED,
         title: 'Criar Layout Estático',
       },
       {
         id: uuidv4(),
-        column: ColumnType.IN_PROGRESS,
+        column: ColumnType.COMPLETED,
         title: 'Adicionar Funcionalidades',
       },
       {
         id: uuidv4(),
-        column: ColumnType.IN_PROGRESS,
+        column: ColumnType.COMPLETED,
         title: 'Enviar Teste',
       },
     ],
